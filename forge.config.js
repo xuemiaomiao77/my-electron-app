@@ -24,6 +24,20 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'xuemiaomiao77',
+          name: 'my-electron-app'
+        },
+        branch: 'main',
+        prerelease: false,
+        draft: true
+      }
+    }
+  ],
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',
@@ -41,4 +55,10 @@ module.exports = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+  packagerConfig: {
+    platform: 'darwin', // Target platform
+    arch: ['x64', 'arm64'], // Target architectures
+    asar: true,
+    icon: 'path/to/icon', // Optional: specify the path to your app icon
+  },
 };
